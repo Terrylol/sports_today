@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamhistory.mapper.HistoryEventMapper">
+
+    <resultMap id="HistoryEventResultMap" type="com.example.teamhistory.entity.HistoryEvent">
+        <id property="id" column="id"/>
+        <result property="eventMonth" column="event_month"/>
+        <result property="eventDay" column="event_day"/>
+        <result property="eventYear" column="event_year"/>
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="type" column="type"/>
+        <association property="team" javaType="com.example.teamhistory.entity.Team" columnPrefix="team_">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="displayName" column="display_name"/>
+            <result property="logoUrl" column="logo_url"/>
+        </association>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO history_events (team_id, event_month, event_day, event_year, title, description, image_url, type)
+        VALUES (#{team.id}, #{eventMonth}, #{eventDay}, #{eventYear}, #{title}, #{description}, #{imageUrl}, #{type})
+    </insert>
+
+    <select id="findByDate" resultMap="HistoryEventResultMap">
+        SELECT 
+            he.id, he.event_month, he.event_day, he.event_year, he.title, he.description, he.image_url, he.type,
+            t.id as team_id, t.name as team_name, t.display_name as team_display_name, t.logo_url as team_logo_url
+        FROM history_events he
+        JOIN teams t ON he.team_id = t.id
+        WHERE he.event_month = #{month} AND he.event_day = #{day}
+    </select>
+
+    <select id="findByTeamAndDate" resultMap="HistoryEventResultMap">
+        SELECT 
+            he.id, he.event_month, he.event_day, he.event_year, he.title, he.description, he.image_url, he.type,
+            t.id as team_id, t.name as team_name, t.display_name as team_display_name, t.logo_url as team_logo_url
+        FROM history_events he
+        JOIN teams t ON he.team_id = t.id
+        WHERE he.event_month = #{month} AND he.event_day = #{day} AND he.team_id = #{teamId}
+    </select>
+
+    <delete id="deleteByTeamAndDate">
+        DELETE FROM history_events
+        WHERE team_id = #{teamId} AND event_month = #{month} AND event_day = #{day}
+    </delete>
+
+</mapper>

@@ -1,0 +1,17 @@
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/TeamHistoryApplication.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/controller/TeamController.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/controller/HistoryEventController.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/mapper/TeamMapper.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/entity/Team.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/controller/UserController.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/service/AdminTaskRunner.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/service/AIService.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/service/AdminService.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/entity/User.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/service/TaskStatus.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/entity/HistoryEvent.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/config/AdminAuthFilter.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/mapper/UserMapper.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/controller/AdminController.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/mapper/HistoryEventMapper.java
+/Users/chengshang/Code/trae_projects/vue_learn/backend/src/main/java/com/example/teamhistory/bootstrap/DataInitializer.java

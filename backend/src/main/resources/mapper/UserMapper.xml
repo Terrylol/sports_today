@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamhistory.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="com.example.teamhistory.entity.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="nickname" column="nickname"/>
+        <result property="favoriteTeamId" column="favorite_team_id"/>
+        <result property="visitCount" column="visit_count"/>
+        <result property="lastVisitDate" column="last_visit_date"/>
+        <association property="favoriteTeam" column="favorite_team_id" 
+                     select="com.example.teamhistory.mapper.TeamMapper.findById"/>
+    </resultMap>
+
+    <select id="findByUsername" resultMap="UserResultMap">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+
+    <select id="findById" resultMap="UserResultMap">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (username, nickname, favorite_team_id, visit_count, last_visit_date)
+        VALUES (#{username}, #{nickname}, #{favoriteTeamId}, #{visitCount}, #{lastVisitDate})
+    </insert>
+
+    <update id="updateFavoriteTeam">
+        UPDATE users SET favorite_team_id = #{teamId} WHERE id = #{userId}
+    </update>
+
+    <update id="updateVisitInfo">
+        UPDATE users SET visit_count = #{visitCount}, last_visit_date = #{lastVisitDate} WHERE id = #{id}
+    </update>
+
+</mapper>
